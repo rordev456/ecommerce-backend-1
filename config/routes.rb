@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     namespace 'v1' do
   # resources :sizes
   # resources :inventories
-  # resources :categories
+  resources :categories, only: [:index]
   # resources :products
   # resources :product_carts
   # resources :carts

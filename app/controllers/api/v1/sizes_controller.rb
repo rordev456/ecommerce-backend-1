@@ -1,2 +1,2 @@
-class API::V1::SizesController < ApplicationController
+class Api::V1::SizesController < ApplicationController
 end

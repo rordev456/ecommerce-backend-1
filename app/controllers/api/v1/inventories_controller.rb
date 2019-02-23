@@ -1,2 +1,2 @@
-class API::V1::InventoriesController < ApplicationController
+class Api::V1::InventoriesController < ApplicationController
 end
