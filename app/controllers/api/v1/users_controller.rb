@@ -7,6 +7,7 @@ class Api::V1::UsersController < ApplicationController
 
     def create
         @user = User.create(user_params)
+        byebug
         if @user.valid?
             @token = encode_token(user_id: @user.id)
             render json: {user: @user, jwt: @token}, status: :created
@@ -15,7 +16,6 @@ class Api::V1::UsersController < ApplicationController
     end
 
     def login
-        puts user_params
         @user = User.find_by(email: user_params[:email])
         if @user
             if @user.authenticate(user_params[:password])
@@ -30,7 +30,7 @@ class Api::V1::UsersController < ApplicationController
 
     private
     def user_params
-        params.require(:user).permit(:username, :password)        
+        params.require(:user).permit(:name, :email, :password)        
     end
     
 
