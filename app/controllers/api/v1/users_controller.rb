@@ -6,9 +6,8 @@ class Api::V1::UsersController < ApplicationController
     end
 
     def create
-        @user = User.create(user_params)
-        byebug
-        if @user.valid?
+        @user = User.new(user_params)
+        if @user.save
             @token = encode_token(user_id: @user.id)
             render json: {user: @user, jwt: @token}, status: :created
         else render json: { error: "Failed to create user"}, status: :not_acceptable
@@ -30,7 +29,7 @@ class Api::V1::UsersController < ApplicationController
 
     private
     def user_params
-        params.require(:user).permit(:name, :email, :password)        
+        params.permit(:name, :email, :password)
     end
     
 

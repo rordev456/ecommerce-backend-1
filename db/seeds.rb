@@ -9,8 +9,8 @@
 
 kevyWevy = User.create({name: "Kevin", email: "kev@gmail.com", password: "sup"})
 
-firstSale = Cart.create({user: kevyWevy})
-secondSale = Cart.create({user: kevyWevy})
+firstSale = Cart.create({user: kevyWevy, checkout: true})
+secondSale = Cart.create({user: kevyWevy, checkout: true})
 thirdSale = Cart.create({user: kevyWevy})
 
 shirts = Category.create({name: "Shirts"})

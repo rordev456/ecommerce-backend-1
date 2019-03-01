@@ -4,9 +4,9 @@ Rails.application.routes.draw do
       # resources :sizes
       # resources :inventories
       resources :categories, only: [:index]
-      # resources :products
+      resources :products, only: [:index]
       # resources :product_carts
-      # resources :carts
+      resources :carts, only: [:index]
       resources :users, only: [:index]
       post '/login', to: 'users#login'
       post '/signup', to: 'users#create'
