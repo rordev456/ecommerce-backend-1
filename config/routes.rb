@@ -6,7 +6,7 @@ Rails.application.routes.draw do
       resources :categories, only: [:index]
       resources :products, only: [:index]
       # resources :product_carts
-      resources :carts, only: [:index]
+      resources :carts, only: [:index, :create]
       resources :users, only: [:index]
       post '/login', to: 'users#login'
       post '/signup', to: 'users#create'
