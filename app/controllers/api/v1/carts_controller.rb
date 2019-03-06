@@ -15,8 +15,6 @@ class Api::V1::CartsController < ApplicationController
             end
             render json: @cart
         end
-        # map through the products and then pluck the id
-        # Make sure each Product is duplicated accounted for each cart
 
     end
     
