@@ -16,13 +16,11 @@ class Api::V1::UsersController < ApplicationController
 
     def login
         @user = User.find_by(email: user_params[:email])
-        if @user
-            if @user.authenticate(user_params[:password])
-                @token = encode_token(user_id: @user.id)
-                render json: {user: @user, jwt: @token}, status: :created
-            else render json: {message: "The password didn't work"}, status: :not_acceptable
-            end
-        else render json: {message: "The email didn't work"}, status: :not_acceptable
+        if @user &&  @user.authenticate(user_params[:password])
+            @token = encode_token(user_id: @user.id)
+            render json: {user: UserSerializer.new(@user), jwt: @token}, status: :created
+        else 
+            render json: {message: "Invalid Username or Password"}, status: :not_acceptable
         end
     end
     
